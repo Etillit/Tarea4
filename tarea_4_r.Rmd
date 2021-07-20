@@ -1,0 +1,47 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Como primer paso cargamos la librería tidyverse y el set de datos diamonds.csv
+Dado que el set de datos esta ubicado en el mismo folder que el cuaderno de R,
+no es necesario cambiar el directorio de trabajo.
+```{r}
+library(tidyverse)
+
+diamonds <- read_csv("diamonds.csv")
+diamonds
+str(diamonds)
+#Se observa la estructura que tiene el dataset
+```
+
+Agregando Geometrias:
+
+1. Dispersión
+```{r}
+#1.1. Construcción de un gráfico de dispersión colocando en la estética 
+#     Carat (eje x) versu price (eje y), luego devuelva el gráfico
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_point()
+```
+
+```{r}
+# 1.2. Editamos la estética y mapeamos color con la variable clarity
+esthetic <- aes(x = carat, y = price, color = clarity)
+
+# 1.3. Devolvemos el gráfico con la modificiacón
+ggplot(diamonds, esthetic) +
+  geom_point()
+
+## Comentario: Se puede observar sin dificultad la distribución de puntos,
+## No es necesario agregar una escala a los ejes.
+```
+
+2. Histograma
+```{r}
+#2.1. Construya el tipo de geometría Histograma para la variable price.
+#     Configure el parámetro bins con el valor 40 y devuelva el gráfico
+
+
+```
+
