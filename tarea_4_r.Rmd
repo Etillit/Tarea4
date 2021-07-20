@@ -39,9 +39,117 @@ ggplot(diamonds, esthetic) +
 
 2. Histograma
 ```{r}
-#2.1. Construya el tipo de geometría Histograma para la variable price.
-#     Configure el parámetro bins con el valor 40 y devuelva el gráfico
+#2.1. Construímos el tipo de geometría Histograma para la variable price.
+#     Configuramos el parámetro bins con el valor 40 y devolvemos el gráfico
+ggplot(diamonds, aes(x=price)) +
+  geom_histogram(bins = 40) 
 
+```
+
+```{r}
+#2.2. Agregamos una escala logarítmica de base 10 y devolvemos el gráfico para
+#     ver la diferencia
+ggplot(diamonds, aes(x=price)) +
+  geom_histogram(bins = 40) +
+  scale_x_log10()
+
+```
+
+3. Boxplot
+```{r}
+#3,1, Construimos un grafico de cajas colocando en la estética la variable "cut"
+#     (eje x) versus price (eje y). Agregamos una escala logarítmica por defecto
+#     Finalmente graficamos
+
+ggplot(diamonds, aes(x = cut, y = price)) +
+  scale_y_log10() +
+  geom_boxplot()
+
+#     La escala la realizamos al eje "y" dado que la variable en el eje "x" es 
+#     cualitativa
+
+```
+
+```{r}
+#3.2. Editamos el color de cada caja con el parámetro fill dentro de la estética
+#     y asignamos la variable cut. Por ultimo devolvemos el gráfico.
+ggplot(diamonds, aes(x = cut, y = price, fill = cut)) +
+  scale_y_log10() +
+  geom_boxplot()
+  
+```
+
+4. Facetado
+```{r}
+#4.1. Filtramos diamonds por la variable price que sea mayor a 1000 y por cut
+#     que contenga las categorías Good, Ideal y Premium. Luego asignamos el
+#     resultado a la variable filtered_price. Dado que cut debemos tomar en 
+#     cuenta tres categorías específicas podemos hacer uso del pipe %in%.
+
+filtered_price <- diamonds %>%
+  filter(price > 1000 & cut %in% c("Good", "Ideal", "Premium"))
+
+#4.2. Utilizamos la variable filtered_price para construir un gráfico de barras,
+#     en la estética configuramos X = cut, y = depth.
+
+ggplot(filtered_price, aes(x = cut, y = depth)) +
+  geom_col() 
+```
+
+```{r}
+#4.3. Aplicamos facetado para la variable clarity y devolvemos los gráficos
+
+ggplot(filtered_price, aes(x = cut, y = depth)) +
+  geom_col() +
+  facet_wrap(~ clarity)
+
+```
+
+```{r}
+#4.4. Editamos la estética agregando el parámetro fill con la variable clarity.
+#     Luego devolvemos la parcela de gráficos con la modificación
+
+ggplot(filtered_price, aes(x = cut, y = depth, fill = clarity)) +
+  geom_col() +
+  facet_wrap(~ clarity)
+
+
+```
+
+Grouping ans Summarizing
+1. Utilizamos diamonds para construir un agrupamiento por la variable cut, luego 
+   aplique summarize para encontrar la media de las variables x, y, z (los 
+   nombres de los valores sumarizados serán mediaX, mediaY, mediaZ, 
+   respectivamente). Asigne el resultado a la variable median_dimension_diamond,
+   por último imprima la variable.
+```{r}
+median_dimension_diamond <- diamonds %>%
+  group_by(cut) %>%
+  summarize(mediaX = mean(x), mediaY = mean(y), mediaZ = mean(z))
+
+median_dimension_diamond
+```
+
+2. Utilizamos diamonds para filtrar por la variable cut igual a Premium. Luego 
+   agrupamos por la variable clarity y utilizamos summarize para encontrar 
+   minimo y maximo de price (los nombres de los valores sumarizados serán 
+   minPrice y maxPrice, respectivamente). Asignamos el resultado a la variable 
+   cut_premium e imprimimos el valor de la variable.
+```{r}
+cut_premium <- diamonds %>%
+  filter(cut == "Premium") %>%
+  group_by(clarity) %>%
+  summarize(minPrice = min(price), maxPrice = max(price))
+
+cut_premium
+```
+
+3. Construímos un gráfico de barras y utilizamos cut_premium como set de datos, 
+   configuramos x=clarity, y=maxPrice y el color de relleno (fill) con la 
+   variable clarity. Por último devolvemos el gráfico.
+```{r}
+ggplot(cut_premium, aes(x = clarity, y = maxPrice, fill = clarity)) +
+  geom_col()
 
 ```
 

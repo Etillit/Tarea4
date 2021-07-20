@@ -262,16 +262,148 @@ ggplot(diamonds, esthetic) +
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIzIuMS4gQ29uc3RydXlhIGVsIHRpcG8gZGUgZ2VvbWV0csOtYSBIaXN0b2dyYW1hIHBhcmEgbGEgdmFyaWFibGUgcHJpY2UuXG4jICAgICBDb25maWd1cmUgZWwgcGFyw6FtZXRybyBiaW5zIGNvbiBlbCB2YWxvciA0MCB5IGRldnVlbHZhIGVsIGdyw6FmaWNvXG5cblxuYGBgIn0= -->
-<pre class="r"><code>#2.1. Construya el tipo de geometría Histograma para la variable price.
-#     Configure el parámetro bins con el valor 40 y devuelva el gráfico
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIzIuMS4gQ29uc3RydcOtbW9zIGVsIHRpcG8gZGUgZ2VvbWV0csOtYSBIaXN0b2dyYW1hIHBhcmEgbGEgdmFyaWFibGUgcHJpY2UuXG4jICAgICBDb25maWd1cmFtb3MgZWwgcGFyw6FtZXRybyBiaW5zIGNvbiBlbCB2YWxvciA0MCB5IGRldm9sdmVtb3MgZWwgZ3LDoWZpY29cbmdncGxvdChkaWFtb25kcywgYWVzKHg9cHJpY2UpKSArXG4gIGdlb21faGlzdG9ncmFtKGJpbnMgPSA0MCkgXG5cbmBgYCJ9 -->
+<pre class="r"><code>#2.1. Construímos el tipo de geometría Histograma para la variable price.
+#     Configuramos el parámetro bins con el valor 40 y devolvemos el gráfico
+ggplot(diamonds, aes(x=price)) +
+  geom_histogram(bins = 40) 
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIzIuMi4gQWdyZWdhbW9zIHVuYSBlc2NhbGEgbG9nYXLDrXRtaWNhIGRlIGJhc2UgMTAgeSBkZXZvbHZlbW9zIGVsIGdyw6FmaWNvIHBhcmFcbiMgICAgIHZlciBsYSBkaWZlcmVuY2lhXG5nZ3Bsb3QoZGlhbW9uZHMsIGFlcyh4PXByaWNlKSkgK1xuICBnZW9tX2hpc3RvZ3JhbShiaW5zID0gNDApICtcbiAgc2NhbGVfeF9sb2cxMCgpXG5cbmBgYCJ9 -->
+<pre class="r"><code>#2.2. Agregamos una escala logarítmica de base 10 y devolvemos el gráfico para
+#     ver la diferencia
+ggplot(diamonds, aes(x=price)) +
+  geom_histogram(bins = 40) +
+  scale_x_log10()
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ol start="3" style="list-style-type: decimal">
+<li>Boxplot</li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIzMsMSwgQ29uc3RydWltb3MgdW4gZ3JhZmljbyBkZSBjYWphcyBjb2xvY2FuZG8gZW4gbGEgZXN0w6l0aWNhIGxhIHZhcmlhYmxlIFwiY3V0XCJcbiMgICAgIChlamUgeCkgdmVyc3VzIHByaWNlIChlamUgeSkuIEFncmVnYW1vcyB1bmEgZXNjYWxhIGxvZ2Fyw610bWljYSBwb3IgZGVmZWN0b1xuIyAgICAgRmluYWxtZW50ZSBncmFmaWNhbW9zXG5cbmdncGxvdChkaWFtb25kcywgYWVzKHggPSBjdXQsIHkgPSBwcmljZSkpICtcbiAgc2NhbGVfeV9sb2cxMCgpICtcbiAgZ2VvbV9ib3hwbG90KClcblxuIyAgICAgTGEgZXNjYWxhIGxhIHJlYWxpemFtb3MgYWwgZWplIFwieVwiIGRhZG8gcXVlIGxhIHZhcmlhYmxlIGVuIGVsIGVqZSBcInhcIiBlcyBcbiMgICAgIGN1YWxpdGF0aXZhXG5cbmBgYCJ9 -->
+<pre class="r"><code>#3,1, Construimos un grafico de cajas colocando en la estética la variable &quot;cut&quot;
+#     (eje x) versus price (eje y). Agregamos una escala logarítmica por defecto
+#     Finalmente graficamos
+
+ggplot(diamonds, aes(x = cut, y = price)) +
+  scale_y_log10() +
+  geom_boxplot()
+
+#     La escala la realizamos al eje &quot;y&quot; dado que la variable en el eje &quot;x&quot; es 
+#     cualitativa
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIzMuMi4gRWRpdGFtb3MgZWwgY29sb3IgZGUgY2FkYSBjYWphIGNvbiBlbCBwYXLDoW1ldHJvIGZpbGwgZGVudHJvIGRlIGxhIGVzdMOpdGljYVxuIyAgICAgeSBhc2lnbmFtb3MgbGEgdmFyaWFibGUgY3V0LiBQb3IgdWx0aW1vIGRldm9sdmVtb3MgZWwgZ3LDoWZpY28uXG5nZ3Bsb3QoZGlhbW9uZHMsIGFlcyh4ID0gY3V0LCB5ID0gcHJpY2UsIGZpbGwgPSBjdXQpKSArXG4gIHNjYWxlX3lfbG9nMTAoKSArXG4gIGdlb21fYm94cGxvdCgpXG4gIFxuYGBgIn0= -->
+<pre class="r"><code>#3.2. Editamos el color de cada caja con el parámetro fill dentro de la estética
+#     y asignamos la variable cut. Por ultimo devolvemos el gráfico.
+ggplot(diamonds, aes(x = cut, y = price, fill = cut)) +
+  scale_y_log10() +
+  geom_boxplot()
+  </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ol start="4" style="list-style-type: decimal">
+<li>Facetado</li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIzQuMS4gRmlsdHJhbW9zIGRpYW1vbmRzIHBvciBsYSB2YXJpYWJsZSBwcmljZSBxdWUgc2VhIG1heW9yIGEgMTAwMCB5IHBvciBjdXRcbiMgICAgIHF1ZSBjb250ZW5nYSBsYXMgY2F0ZWdvcsOtYXMgR29vZCwgSWRlYWwgeSBQcmVtaXVtLiBMdWVnbyBhc2lnbmFtb3MgZWxcbiMgICAgIHJlc3VsdGFkbyBhIGxhIHZhcmlhYmxlIGZpbHRlcmVkX3ByaWNlLiBEYWRvIHF1ZSBjdXQgZGViZW1vcyB0b21hciBlbiBcbiMgICAgIGN1ZW50YSB0cmVzIGNhdGVnb3LDrWFzIGVzcGVjw61maWNhcyBwb2RlbW9zIGhhY2VyIHVzbyBkZWwgcGlwZSAlaW4lLlxuXG5maWx0ZXJlZF9wcmljZSA8LSBkaWFtb25kcyAlPiVcbiAgZmlsdGVyKHByaWNlID4gMTAwMCAmIGN1dCAlaW4lIGMoXCJHb29kXCIsIFwiSWRlYWxcIiwgXCJQcmVtaXVtXCIpKVxuXG4jNC4yLiBVdGlsaXphbW9zIGxhIHZhcmlhYmxlIGZpbHRlcmVkX3ByaWNlIHBhcmEgY29uc3RydWlyIHVuIGdyw6FmaWNvIGRlIGJhcnJhcyxcbiMgICAgIGVuIGxhIGVzdMOpdGljYSBjb25maWd1cmFtb3MgWCA9IGN1dCwgeSA9IGRlcHRoLlxuXG5nZ3Bsb3QoZmlsdGVyZWRfcHJpY2UsIGFlcyh4ID0gY3V0LCB5ID0gZGVwdGgpKSArXG4gIGdlb21fY29sKCkgXG5gYGAifQ== -->
+<pre class="r"><code>#4.1. Filtramos diamonds por la variable price que sea mayor a 1000 y por cut
+#     que contenga las categorías Good, Ideal y Premium. Luego asignamos el
+#     resultado a la variable filtered_price. Dado que cut debemos tomar en 
+#     cuenta tres categorías específicas podemos hacer uso del pipe %in%.
+
+filtered_price &lt;- diamonds %&gt;%
+  filter(price &gt; 1000 &amp; cut %in% c(&quot;Good&quot;, &quot;Ideal&quot;, &quot;Premium&quot;))
+
+#4.2. Utilizamos la variable filtered_price para construir un gráfico de barras,
+#     en la estética configuramos X = cut, y = depth.
+
+ggplot(filtered_price, aes(x = cut, y = depth)) +
+  geom_col() </code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIzQuMy4gQXBsaWNhbW9zIGZhY2V0YWRvIHBhcmEgbGEgdmFyaWFibGUgY2xhcml0eSB5IGRldm9sdmVtb3MgbG9zIGdyw6FmaWNvc1xuXG5nZ3Bsb3QoZmlsdGVyZWRfcHJpY2UsIGFlcyh4ID0gY3V0LCB5ID0gZGVwdGgpKSArXG4gIGdlb21fY29sKCkgK1xuICBmYWNldF93cmFwKH4gY2xhcml0eSlcblxuYGBgIn0= -->
+<pre class="r"><code>#4.3. Aplicamos facetado para la variable clarity y devolvemos los gráficos
+
+ggplot(filtered_price, aes(x = cut, y = depth)) +
+  geom_col() +
+  facet_wrap(~ clarity)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIzQuNC4gRWRpdGFtb3MgbGEgZXN0w6l0aWNhIGFncmVnYW5kbyBlbCBwYXLDoW1ldHJvIGZpbGwgY29uIGxhIHZhcmlhYmxlIGNsYXJpdHkuXG4jICAgICBMdWVnbyBkZXZvbHZlbW9zIGxhIHBhcmNlbGEgZGUgZ3LDoWZpY29zIGNvbiBsYSBtb2RpZmljYWNpw7NuXG5cbmdncGxvdChmaWx0ZXJlZF9wcmljZSwgYWVzKHggPSBjdXQsIHkgPSBkZXB0aCwgZmlsbCA9IGNsYXJpdHkpKSArXG4gIGdlb21fY29sKCkgK1xuICBmYWNldF93cmFwKH4gY2xhcml0eSlcblxuXG5gYGAifQ== -->
+<pre class="r"><code>#4.4. Editamos la estética agregando el parámetro fill con la variable clarity.
+#     Luego devolvemos la parcela de gráficos con la modificación
+
+ggplot(filtered_price, aes(x = cut, y = depth, fill = clarity)) +
+  geom_col() +
+  facet_wrap(~ clarity)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Grouping ans Summarizing 1. Utilizamos diamonds para construir un agrupamiento por la variable cut, luego aplique summarize para encontrar la media de las variables x, y, z (los nombres de los valores sumarizados serán mediaX, mediaY, mediaZ, respectivamente). Asigne el resultado a la variable median_dimension_diamond, por último imprima la variable.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWVkaWFuX2RpbWVuc2lvbl9kaWFtb25kIDwtIGRpYW1vbmRzICU+JVxuICBncm91cF9ieShjdXQpICU+JVxuICBzdW1tYXJpemUobWVkaWFYID0gbWVhbih4KSwgbWVkaWFZID0gbWVhbih5KSwgbWVkaWFaID0gbWVhbih6KSlcblxubWVkaWFuX2RpbWVuc2lvbl9kaWFtb25kXG5gYGAifQ== -->
+<pre class="r"><code>median_dimension_diamond &lt;- diamonds %&gt;%
+  group_by(cut) %&gt;%
+  summarize(mediaX = mean(x), mediaY = mean(y), mediaZ = mean(z))
+
+median_dimension_diamond</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ol start="2" style="list-style-type: decimal">
+<li>Utilizamos diamonds para filtrar por la variable cut igual a Premium. Luego agrupamos por la variable clarity y utilizamos summarize para encontrar minimo y maximo de price (los nombres de los valores sumarizados serán minPrice y maxPrice, respectivamente). Asignamos el resultado a la variable cut_premium e imprimimos el valor de la variable.</li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY3V0X3ByZW1pdW0gPC0gZGlhbW9uZHMgJT4lXG4gIGZpbHRlcihjdXQgPT0gXCJQcmVtaXVtXCIpICU+JVxuICBncm91cF9ieShjbGFyaXR5KSAlPiVcbiAgc3VtbWFyaXplKG1pblByaWNlID0gbWluKHByaWNlKSwgbWF4UHJpY2UgPSBtYXgocHJpY2UpKVxuXG5jdXRfcHJlbWl1bVxuYGBgIn0= -->
+<pre class="r"><code>cut_premium &lt;- diamonds %&gt;%
+  filter(cut == &quot;Premium&quot;) %&gt;%
+  group_by(clarity) %&gt;%
+  summarize(minPrice = min(price), maxPrice = max(price))
+
+cut_premium</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<ol start="3" style="list-style-type: decimal">
+<li>Construímos un gráfico de barras y utilizamos cut_premium como set de datos, configuramos x=clarity, y=maxPrice y el color de relleno (fill) con la variable clarity. Por último devolvemos el gráfico.</li>
+</ol>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGN1dF9wcmVtaXVtLCBhZXMoeCA9IGNsYXJpdHksIHkgPSBtYXhQcmljZSwgZmlsbCA9IGNsYXJpdHkpKSArXG4gIGdlb21fY29sKClcblxuYGBgIn0= -->
+<pre class="r"><code>ggplot(cut_premium, aes(x = clarity, y = maxPrice, fill = clarity)) +
+  geom_col()
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpDb21vIHByaW1lciBwYXNvIGNhcmdhbW9zIGxhIGxpYnJlcsOtYSB0aWR5dmVyc2UgeSBlbCBzZXQgZGUgZGF0b3MgZGlhbW9uZHMuY3N2DQpEYWRvIHF1ZSBlbCBzZXQgZGUgZGF0b3MgZXN0YSB1YmljYWRvIGVuIGVsIG1pc21vIGZvbGRlciBxdWUgZWwgY3VhZGVybm8gZGUgUiwNCm5vIGVzIG5lY2VzYXJpbyBjYW1iaWFyIGVsIGRpcmVjdG9yaW8gZGUgdHJhYmFqby4NCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQoNCmRpYW1vbmRzIDwtIHJlYWRfY3N2KCJkaWFtb25kcy5jc3YiKQ0KZGlhbW9uZHMNCnN0cihkaWFtb25kcykNCiNTZSBvYnNlcnZhIGxhIGVzdHJ1Y3R1cmEgcXVlIHRpZW5lIGVsIGRhdGFzZXQNCmBgYA0KDQpBZ3JlZ2FuZG8gR2VvbWV0cmlhczoNCg0KMS4gRGlzcGVyc2nDs24NCmBgYHtyfQ0KIzEuMS4gQ29uc3RydWNjacOzbiBkZSB1biBncsOhZmljbyBkZSBkaXNwZXJzacOzbiBjb2xvY2FuZG8gZW4gbGEgZXN0w6l0aWNhIA0KIyAgICAgQ2FyYXQgKGVqZSB4KSB2ZXJzdSBwcmljZSAoZWplIHkpLCBsdWVnbyBkZXZ1ZWx2YSBlbCBncsOhZmljbw0KZ2dwbG90KGRpYW1vbmRzLCBhZXMoeCA9IGNhcmF0LCB5ID0gcHJpY2UpKSArDQogIGdlb21fcG9pbnQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyAxLjIuIEVkaXRhbW9zIGxhIGVzdMOpdGljYSB5IG1hcGVhbW9zIGNvbG9yIGNvbiBsYSB2YXJpYWJsZSBjbGFyaXR5DQplc3RoZXRpYyA8LSBhZXMoeCA9IGNhcmF0LCB5ID0gcHJpY2UsIGNvbG9yID0gY2xhcml0eSkNCg0KIyAxLjMuIERldm9sdmVtb3MgZWwgZ3LDoWZpY28gY29uIGxhIG1vZGlmaWNpYWPDs24NCmdncGxvdChkaWFtb25kcywgZXN0aGV0aWMpICsNCiAgZ2VvbV9wb2ludCgpDQoNCiMjIENvbWVudGFyaW86IFNlIHB1ZWRlIG9ic2VydmFyIHNpbiBkaWZpY3VsdGFkIGxhIGRpc3RyaWJ1Y2nDs24gZGUgcHVudG9zLA0KIyMgTm8gZXMgbmVjZXNhcmlvIGFncmVnYXIgdW5hIGVzY2FsYSBhIGxvcyBlamVzLg0KYGBgDQoNCjIuIEhpc3RvZ3JhbWENCmBgYHtyfQ0KIzIuMS4gQ29uc3RydXlhIGVsIHRpcG8gZGUgZ2VvbWV0csOtYSBIaXN0b2dyYW1hIHBhcmEgbGEgdmFyaWFibGUgcHJpY2UuDQojICAgICBDb25maWd1cmUgZWwgcGFyw6FtZXRybyBiaW5zIGNvbiBlbCB2YWxvciA0MCB5IGRldnVlbHZhIGVsIGdyw6FmaWNvDQoNCg0KYGBgDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpDb21vIHByaW1lciBwYXNvIGNhcmdhbW9zIGxhIGxpYnJlcsOtYSB0aWR5dmVyc2UgeSBlbCBzZXQgZGUgZGF0b3MgZGlhbW9uZHMuY3N2DQpEYWRvIHF1ZSBlbCBzZXQgZGUgZGF0b3MgZXN0YSB1YmljYWRvIGVuIGVsIG1pc21vIGZvbGRlciBxdWUgZWwgY3VhZGVybm8gZGUgUiwNCm5vIGVzIG5lY2VzYXJpbyBjYW1iaWFyIGVsIGRpcmVjdG9yaW8gZGUgdHJhYmFqby4NCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQoNCmRpYW1vbmRzIDwtIHJlYWRfY3N2KCJkaWFtb25kcy5jc3YiKQ0KZGlhbW9uZHMNCnN0cihkaWFtb25kcykNCiNTZSBvYnNlcnZhIGxhIGVzdHJ1Y3R1cmEgcXVlIHRpZW5lIGVsIGRhdGFzZXQNCmBgYA0KDQpBZ3JlZ2FuZG8gR2VvbWV0cmlhczoNCg0KMS4gRGlzcGVyc2nDs24NCmBgYHtyfQ0KIzEuMS4gQ29uc3RydWNjacOzbiBkZSB1biBncsOhZmljbyBkZSBkaXNwZXJzacOzbiBjb2xvY2FuZG8gZW4gbGEgZXN0w6l0aWNhIA0KIyAgICAgQ2FyYXQgKGVqZSB4KSB2ZXJzdSBwcmljZSAoZWplIHkpLCBsdWVnbyBkZXZ1ZWx2YSBlbCBncsOhZmljbw0KZ2dwbG90KGRpYW1vbmRzLCBhZXMoeCA9IGNhcmF0LCB5ID0gcHJpY2UpKSArDQogIGdlb21fcG9pbnQoKQ0KYGBgDQoNCmBgYHtyfQ0KIyAxLjIuIEVkaXRhbW9zIGxhIGVzdMOpdGljYSB5IG1hcGVhbW9zIGNvbG9yIGNvbiBsYSB2YXJpYWJsZSBjbGFyaXR5DQplc3RoZXRpYyA8LSBhZXMoeCA9IGNhcmF0LCB5ID0gcHJpY2UsIGNvbG9yID0gY2xhcml0eSkNCg0KIyAxLjMuIERldm9sdmVtb3MgZWwgZ3LDoWZpY28gY29uIGxhIG1vZGlmaWNpYWPDs24NCmdncGxvdChkaWFtb25kcywgZXN0aGV0aWMpICsNCiAgZ2VvbV9wb2ludCgpDQoNCiMjIENvbWVudGFyaW86IFNlIHB1ZWRlIG9ic2VydmFyIHNpbiBkaWZpY3VsdGFkIGxhIGRpc3RyaWJ1Y2nDs24gZGUgcHVudG9zLA0KIyMgTm8gZXMgbmVjZXNhcmlvIGFncmVnYXIgdW5hIGVzY2FsYSBhIGxvcyBlamVzLg0KYGBgDQoNCjIuIEhpc3RvZ3JhbWENCmBgYHtyfQ0KIzIuMS4gQ29uc3RydcOtbW9zIGVsIHRpcG8gZGUgZ2VvbWV0csOtYSBIaXN0b2dyYW1hIHBhcmEgbGEgdmFyaWFibGUgcHJpY2UuDQojICAgICBDb25maWd1cmFtb3MgZWwgcGFyw6FtZXRybyBiaW5zIGNvbiBlbCB2YWxvciA0MCB5IGRldm9sdmVtb3MgZWwgZ3LDoWZpY28NCmdncGxvdChkaWFtb25kcywgYWVzKHg9cHJpY2UpKSArDQogIGdlb21faGlzdG9ncmFtKGJpbnMgPSA0MCkgDQoNCmBgYA0KDQpgYGB7cn0NCiMyLjIuIEFncmVnYW1vcyB1bmEgZXNjYWxhIGxvZ2Fyw610bWljYSBkZSBiYXNlIDEwIHkgZGV2b2x2ZW1vcyBlbCBncsOhZmljbyBwYXJhDQojICAgICB2ZXIgbGEgZGlmZXJlbmNpYQ0KZ2dwbG90KGRpYW1vbmRzLCBhZXMoeD1wcmljZSkpICsNCiAgZ2VvbV9oaXN0b2dyYW0oYmlucyA9IDQwKSArDQogIHNjYWxlX3hfbG9nMTAoKQ0KDQpgYGANCg0KMy4gQm94cGxvdA0KYGBge3J9DQojMywxLCBDb25zdHJ1aW1vcyB1biBncmFmaWNvIGRlIGNhamFzIGNvbG9jYW5kbyBlbiBsYSBlc3TDqXRpY2EgbGEgdmFyaWFibGUgImN1dCINCiMgICAgIChlamUgeCkgdmVyc3VzIHByaWNlIChlamUgeSkuIEFncmVnYW1vcyB1bmEgZXNjYWxhIGxvZ2Fyw610bWljYSBwb3IgZGVmZWN0bw0KIyAgICAgRmluYWxtZW50ZSBncmFmaWNhbW9zDQoNCmdncGxvdChkaWFtb25kcywgYWVzKHggPSBjdXQsIHkgPSBwcmljZSkpICsNCiAgc2NhbGVfeV9sb2cxMCgpICsNCiAgZ2VvbV9ib3hwbG90KCkNCg0KIyAgICAgTGEgZXNjYWxhIGxhIHJlYWxpemFtb3MgYWwgZWplICJ5IiBkYWRvIHF1ZSBsYSB2YXJpYWJsZSBlbiBlbCBlamUgIngiIGVzIA0KIyAgICAgY3VhbGl0YXRpdmENCg0KYGBgDQoNCmBgYHtyfQ0KIzMuMi4gRWRpdGFtb3MgZWwgY29sb3IgZGUgY2FkYSBjYWphIGNvbiBlbCBwYXLDoW1ldHJvIGZpbGwgZGVudHJvIGRlIGxhIGVzdMOpdGljYQ0KIyAgICAgeSBhc2lnbmFtb3MgbGEgdmFyaWFibGUgY3V0LiBQb3IgdWx0aW1vIGRldm9sdmVtb3MgZWwgZ3LDoWZpY28uDQpnZ3Bsb3QoZGlhbW9uZHMsIGFlcyh4ID0gY3V0LCB5ID0gcHJpY2UsIGZpbGwgPSBjdXQpKSArDQogIHNjYWxlX3lfbG9nMTAoKSArDQogIGdlb21fYm94cGxvdCgpDQogIA0KYGBgDQoNCjQuIEZhY2V0YWRvDQpgYGB7cn0NCiM0LjEuIEZpbHRyYW1vcyBkaWFtb25kcyBwb3IgbGEgdmFyaWFibGUgcHJpY2UgcXVlIHNlYSBtYXlvciBhIDEwMDAgeSBwb3IgY3V0DQojICAgICBxdWUgY29udGVuZ2EgbGFzIGNhdGVnb3LDrWFzIEdvb2QsIElkZWFsIHkgUHJlbWl1bS4gTHVlZ28gYXNpZ25hbW9zIGVsDQojICAgICByZXN1bHRhZG8gYSBsYSB2YXJpYWJsZSBmaWx0ZXJlZF9wcmljZS4gRGFkbyBxdWUgY3V0IGRlYmVtb3MgdG9tYXIgZW4gDQojICAgICBjdWVudGEgdHJlcyBjYXRlZ29yw61hcyBlc3BlY8OtZmljYXMgcG9kZW1vcyBoYWNlciB1c28gZGVsIHBpcGUgJWluJS4NCg0KZmlsdGVyZWRfcHJpY2UgPC0gZGlhbW9uZHMgJT4lDQogIGZpbHRlcihwcmljZSA+IDEwMDAgJiBjdXQgJWluJSBjKCJHb29kIiwgIklkZWFsIiwgIlByZW1pdW0iKSkNCg0KIzQuMi4gVXRpbGl6YW1vcyBsYSB2YXJpYWJsZSBmaWx0ZXJlZF9wcmljZSBwYXJhIGNvbnN0cnVpciB1biBncsOhZmljbyBkZSBiYXJyYXMsDQojICAgICBlbiBsYSBlc3TDqXRpY2EgY29uZmlndXJhbW9zIFggPSBjdXQsIHkgPSBkZXB0aC4NCg0KZ2dwbG90KGZpbHRlcmVkX3ByaWNlLCBhZXMoeCA9IGN1dCwgeSA9IGRlcHRoKSkgKw0KICBnZW9tX2NvbCgpIA0KYGBgDQoNCmBgYHtyfQ0KIzQuMy4gQXBsaWNhbW9zIGZhY2V0YWRvIHBhcmEgbGEgdmFyaWFibGUgY2xhcml0eSB5IGRldm9sdmVtb3MgbG9zIGdyw6FmaWNvcw0KDQpnZ3Bsb3QoZmlsdGVyZWRfcHJpY2UsIGFlcyh4ID0gY3V0LCB5ID0gZGVwdGgpKSArDQogIGdlb21fY29sKCkgKw0KICBmYWNldF93cmFwKH4gY2xhcml0eSkNCg0KYGBgDQoNCmBgYHtyfQ0KIzQuNC4gRWRpdGFtb3MgbGEgZXN0w6l0aWNhIGFncmVnYW5kbyBlbCBwYXLDoW1ldHJvIGZpbGwgY29uIGxhIHZhcmlhYmxlIGNsYXJpdHkuDQojICAgICBMdWVnbyBkZXZvbHZlbW9zIGxhIHBhcmNlbGEgZGUgZ3LDoWZpY29zIGNvbiBsYSBtb2RpZmljYWNpw7NuDQoNCmdncGxvdChmaWx0ZXJlZF9wcmljZSwgYWVzKHggPSBjdXQsIHkgPSBkZXB0aCwgZmlsbCA9IGNsYXJpdHkpKSArDQogIGdlb21fY29sKCkgKw0KICBmYWNldF93cmFwKH4gY2xhcml0eSkNCg0KDQpgYGANCg0KR3JvdXBpbmcgYW5zIFN1bW1hcml6aW5nDQoxLiBVdGlsaXphbW9zIGRpYW1vbmRzIHBhcmEgY29uc3RydWlyIHVuIGFncnVwYW1pZW50byBwb3IgbGEgdmFyaWFibGUgY3V0LCBsdWVnbyANCiAgIGFwbGlxdWUgc3VtbWFyaXplIHBhcmEgZW5jb250cmFyIGxhIG1lZGlhIGRlIGxhcyB2YXJpYWJsZXMgeCwgeSwgeiAobG9zIA0KICAgbm9tYnJlcyBkZSBsb3MgdmFsb3JlcyBzdW1hcml6YWRvcyBzZXLDoW4gbWVkaWFYLCBtZWRpYVksIG1lZGlhWiwgDQogICByZXNwZWN0aXZhbWVudGUpLiBBc2lnbmUgZWwgcmVzdWx0YWRvIGEgbGEgdmFyaWFibGUgbWVkaWFuX2RpbWVuc2lvbl9kaWFtb25kLA0KICAgcG9yIMO6bHRpbW8gaW1wcmltYSBsYSB2YXJpYWJsZS4NCmBgYHtyfQ0KbWVkaWFuX2RpbWVuc2lvbl9kaWFtb25kIDwtIGRpYW1vbmRzICU+JQ0KICBncm91cF9ieShjdXQpICU+JQ0KICBzdW1tYXJpemUobWVkaWFYID0gbWVhbih4KSwgbWVkaWFZID0gbWVhbih5KSwgbWVkaWFaID0gbWVhbih6KSkNCg0KbWVkaWFuX2RpbWVuc2lvbl9kaWFtb25kDQpgYGANCg0KMi4gVXRpbGl6YW1vcyBkaWFtb25kcyBwYXJhIGZpbHRyYXIgcG9yIGxhIHZhcmlhYmxlIGN1dCBpZ3VhbCBhIFByZW1pdW0uIEx1ZWdvIA0KICAgYWdydXBhbW9zIHBvciBsYSB2YXJpYWJsZSBjbGFyaXR5IHkgdXRpbGl6YW1vcyBzdW1tYXJpemUgcGFyYSBlbmNvbnRyYXIgDQogICBtaW5pbW8geSBtYXhpbW8gZGUgcHJpY2UgKGxvcyBub21icmVzIGRlIGxvcyB2YWxvcmVzIHN1bWFyaXphZG9zIHNlcsOhbiANCiAgIG1pblByaWNlIHkgbWF4UHJpY2UsIHJlc3BlY3RpdmFtZW50ZSkuIEFzaWduYW1vcyBlbCByZXN1bHRhZG8gYSBsYSB2YXJpYWJsZSANCiAgIGN1dF9wcmVtaXVtIGUgaW1wcmltaW1vcyBlbCB2YWxvciBkZSBsYSB2YXJpYWJsZS4NCmBgYHtyfQ0KY3V0X3ByZW1pdW0gPC0gZGlhbW9uZHMgJT4lDQogIGZpbHRlcihjdXQgPT0gIlByZW1pdW0iKSAlPiUNCiAgZ3JvdXBfYnkoY2xhcml0eSkgJT4lDQogIHN1bW1hcml6ZShtaW5QcmljZSA9IG1pbihwcmljZSksIG1heFByaWNlID0gbWF4KHByaWNlKSkNCg0KY3V0X3ByZW1pdW0NCmBgYA0KDQozLiBDb25zdHJ1w61tb3MgdW4gZ3LDoWZpY28gZGUgYmFycmFzIHkgdXRpbGl6YW1vcyBjdXRfcHJlbWl1bSBjb21vIHNldCBkZSBkYXRvcywgDQogICBjb25maWd1cmFtb3MgeD1jbGFyaXR5LCB5PW1heFByaWNlIHkgZWwgY29sb3IgZGUgcmVsbGVubyAoZmlsbCkgY29uIGxhIA0KICAgdmFyaWFibGUgY2xhcml0eS4gUG9yIMO6bHRpbW8gZGV2b2x2ZW1vcyBlbCBncsOhZmljby4NCmBgYHtyfQ0KZ2dwbG90KGN1dF9wcmVtaXVtLCBhZXMoeCA9IGNsYXJpdHksIHkgPSBtYXhQcmljZSwgZmlsbCA9IGNsYXJpdHkpKSArDQogIGdlb21fY29sKCkNCg0KYGBgDQoNCg==</div>
 
 
 
